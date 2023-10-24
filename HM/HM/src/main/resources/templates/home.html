@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tile Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tile-container {
+            display: flex;
+            flex-direction: row;
+            margin: 20px;
+        }
+
+        .tile {
+            width: 200px;
+            height: 200px;
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 10px;
+        }
+
+        .tile:hover {
+            background-color: #2980b9;
+        }
+
+        .tile a {
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<h1>Welcome to My Dashboard</h1>
+<div class="tile-container">
+    <div class="tile" id="logout">
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="tile" id="history">
+        <a href="/history">History</a>
+    </div>
+</div>
+<div class="tile-container">
+    <div class="tile" id="hostels">
+        <a href="/hostels">Hostels</a>
+    </div>
+    <div class="tile" id="mess">
+        <a href="/mess">Mess</a>
+    </div>
+</div>
+</body>
+</html>

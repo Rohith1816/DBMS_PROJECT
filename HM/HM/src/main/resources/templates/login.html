@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        .section {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-top: 10px;
+        }
+
+        .form-style {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .input-icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 10px;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 15px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: #1e70bf;
+        }
+    </style>
+</head>
+<body>
+<h1>Login</h1>
+<form method="post" role="form" th:action="@{/login}">
+    <div class="section text-center">
+        <h4 class="mb-4 pb-3">Log In</h4>
+        <div class="form-group">
+            <input type="text" name="username" class="form-style" placeholder="Your username" id="username" autocomplete="off">
+            <i class="input-icon uil uil-at"></i>
+        </div>
+        <div class="form-group mt-2">
+            <input type="password" name="password" class="form-style" placeholder="Your Password" id="password" autocomplete="off">
+            <i class="input-icon uil uil-lock-alt"></i>
+        </div>
+        <div class="registration-link">
+            <p>Don't have an account? <a href="/register">Register here</a></p>
+        </div>
+        <input type="submit" class="btn" value="Log In">
+    </div>
+</form>
+</body>
+</html>
