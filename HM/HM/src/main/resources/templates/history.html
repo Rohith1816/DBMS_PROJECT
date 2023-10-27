@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hostel Registration</title>
+</head>
+<body>
+<form id="registrationForm">
+    <input type="text" name="hostelNumber" placeholder="Hostel Number">
+    <button type="submit">Register</button>
+</form>
+
+<script>
+    document.getElementById("registrationForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+
+        fetch('/register', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(message => alert(message)); // Display the message as a popup
+    });
+</script>
+</body>
+</html>

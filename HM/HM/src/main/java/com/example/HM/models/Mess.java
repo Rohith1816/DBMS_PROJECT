@@ -5,6 +5,7 @@ public class Mess {
     private String MessName;
     private String MessType;
     private String ContactNumber;
+    private int Capacity;
 
     public Mess() {
 
@@ -15,6 +16,14 @@ public class Mess {
         MessName = messName;
         MessType = messType;
         ContactNumber = contactNumber;
+    }
+
+    public int getCapacity() {
+        return Capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        Capacity = capacity;
     }
 
     public int getMessId() {

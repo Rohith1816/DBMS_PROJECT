@@ -2,7 +2,7 @@ package com.example.HM.models;
 
 import org.springframework.stereotype.Component;
 public class User {
-    private Long id;
+    private int id;
     private String username;
     private  String first_name;
     private  String last_name;
@@ -10,6 +10,7 @@ public class User {
     private String password;
 
     public User() {
+
     }
 
 
@@ -33,7 +34,7 @@ public class User {
         this.password = password;
     }
 
-    public User(Long id, String username, String first_name, String last_name, String email, String password) {
+    public User(int id, String username, String first_name, String last_name, String email, String password) {
         this.id = id;
         this.username = username;
         this.first_name = first_name;
@@ -42,11 +43,11 @@ public class User {
         this.password = password;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

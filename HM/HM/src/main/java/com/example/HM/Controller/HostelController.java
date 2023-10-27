@@ -1,14 +1,33 @@
 package com.example.HM.Controller;
 
+import com.example.HM.Dao.HostelDao;
+import com.example.HM.Dao.UserDao;
+import com.example.HM.models.Hostel;
+import com.example.HM.models.HostelApplications;
+import com.example.HM.models.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class HostelController {
-    @RequestMapping(path={"/hostels"})
-    @ResponseBody
-    public String gethostels(){
-        return "Rohith";
+
+    private HostelDao hostelDao;
+
+    @Autowired
+    public HostelController(HostelDao hostelDao) {
+        this.hostelDao = hostelDao;
     }
+
+    @GetMapping(path={"/hostels"})
+    public String gethostels(Model model){
+        List<Hostel> hostelsList = hostelDao.getAllHostels();
+        model.addAttribute("hostels",hostelsList);
+        return "hostels";
+    }
+
+
 }

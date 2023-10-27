@@ -5,6 +5,15 @@ public class Hostel {
     private String HostelName;
     private String Address;
     private String ContactNumber;
+    private int Capacity;
+
+    public int getCapacity() {
+        return Capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        Capacity = capacity;
+    }
 
     public int getHostelId() {
         return HostelId;

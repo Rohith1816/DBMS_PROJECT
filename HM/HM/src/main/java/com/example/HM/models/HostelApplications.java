@@ -1,12 +1,27 @@
 package com.example.HM.models;
 
 
+import java.sql.Date;
+
 public class HostelApplications {
 
     private int applicationId;
-    private  int userId;
-    private String hostelName;
+    private int userId;
+    private int hostelId;
     private boolean is_active;
+    private Date appliedDate;
+    private Date closingDate;
+
+    public HostelApplications() {
+
+    }
+
+    public HostelApplications(int userId, int hostelId, boolean is_active, Date appliedDate) {
+        this.userId = userId;
+        this.hostelId = hostelId;
+        this.is_active = is_active;
+        this.appliedDate = appliedDate;
+    }
 
     public int getApplicationId() {
         return applicationId;
@@ -24,12 +39,12 @@ public class HostelApplications {
         this.userId = userId;
     }
 
-    public String getHostelName() {
-        return hostelName;
+    public int getHostelId() {
+        return hostelId;
     }
 
-    public void setHostelName(String hostelName) {
-        this.hostelName = hostelName;
+    public void setHostelId(int hostelId) {
+        this.hostelId = hostelId;
     }
 
     public boolean isIs_active() {
@@ -40,13 +55,19 @@ public class HostelApplications {
         this.is_active = is_active;
     }
 
-    public HostelApplications(int applicationId, int userId, String hostelName, boolean is_active) {
-        this.applicationId = applicationId;
-        this.userId = userId;
-        this.hostelName = hostelName;
-        this.is_active = is_active;
+    public Date getAppliedDate() {
+        return appliedDate;
     }
 
-    public HostelApplications() {
+    public void setAppliedDate(Date appliedDate) {
+        this.appliedDate = appliedDate;
+    }
+
+    public Date getClosingDate() {
+        return closingDate;
+    }
+
+    public void setClosingDate(Date closingDate) {
+        this.closingDate = closingDate;
     }
 }
