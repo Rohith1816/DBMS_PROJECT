@@ -44,7 +44,12 @@ public class HostelApplicationController {
 //        System.out.println(u.getId());
         String response;
         int status = hostelApplicationDao.AddApplication(hostelApplications);
-        if(status==1)
+        if(status==-2){
+            response = "Payment not made";
+            model.addAttribute("alertMessage", response);
+            return "neccessaypayment";
+        }
+        else if(status==1)
         {
            response = "Application added successfully";
         }

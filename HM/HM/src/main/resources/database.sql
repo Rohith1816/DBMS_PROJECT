@@ -6,7 +6,7 @@ USE Hostel;
 -- Create table--
 CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT,
-  username VARCHAR(255) NOT NULL UNIQUE
+  username VARCHAR(255) NOT NULL UNIQUE,
   first_name VARCHAR(255) NOT NULL,
   last_name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
@@ -33,15 +33,15 @@ CREATE TABLE MESS(
 
 CREATE TABLE HostelApplications(
     applicationId INT NOT NULL AUTO_INCREMENT,
-    int userId INT NOT NULL FOREIGN KEY(users.id),
-    int hostelId INT NOT NULL,
+    userId INT NOT NULL,
+    hostelId INT NOT NULL,
     is_active BOOLEAN NOT NULL,
     appliedDate DATE NOT NULL,
     closingDate DATE ,
     PRIMARY KEY (applicationId),
     FOREIGN KEY (userId) REFERENCES users(id),
     FOREIGN KEY (hostelId) REFERENCES hostel(HostelId)
-)
+);
 
 CREATE TABLE MessApplications(
     applicationId INT NOT NULL AUTO_INCREMENT,

@@ -1,3 +1,10 @@
 Needed to implement the failed Registration.
 
 HostelApplication Form
+
+Payments
+-- create database table Payments(userid,paymentFor,transactionId,amount);
+-- while rendering hostel page check if the user has paid for the hostel or not.
+-- if not paid then show the payment button.
+else render the hostel page.
+similarly for the mess page.

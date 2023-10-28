@@ -35,8 +35,26 @@ public class HostelApplicationDao {
         return hostelApplications;
     };
 
+    public boolean solve(int uuid){
+        String sql = "SELECT COUNT(*) FROM Payment WHERE userId = ? AND PaymentFor = ?";
+        int count = jdbcTemplate.queryForObject(sql,Integer.class,uuid,"Hostel");
+        if(count==0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
     public int AddApplication(HostelApplications hostelApplications){
         int uuid = hostelApplications.getUserId();
+        boolean check = solve(uuid);
+        if(check==false){
+            System.out.println("Payment not made");
+            return -2;
+        }
+        else{
+            System.out.println("Payment made");
+        }
         System.out.println(uuid);
         String sql = "SELECT applicationId FROM hostelapplications WHERE is_active = TRUE AND userId = ?" ;
         HostelApplications ha = null;

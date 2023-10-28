@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+<script>
+    var alertMessage = '[[${alertMessage}]]'; // Use Thymeleaf syntax here
+    alert(alertMessage);
+
+    setTimeout(function() {
+        window.location.href = '/make_payment';
+    }, 100);
+</script>
+</body>
+</html>
