@@ -8,6 +8,7 @@ import com.example.HM.models.User;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -27,7 +28,9 @@ public class HomeController {
     }
 
     @RequestMapping(path = {"/home"})
-    public String home(){
+    public String home(Model model,@AuthenticationPrincipal UserDetails userDetails){
+        User user = authenticatedUser.getAuthenticatedUser(userDetails);
+        model.addAttribute("username",user.getUsername());
         return "home";
     }
     @RequestMapping(path="/")
@@ -43,6 +46,7 @@ public class HomeController {
         String username = u.getUsername();
         return hostelApplicationDao.getAllApplications(username);
     }
+
 
 }
 //getLoggedUser

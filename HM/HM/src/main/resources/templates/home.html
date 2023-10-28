@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Tile Page</title>
     <style>
@@ -47,7 +47,10 @@
     </style>
 </head>
 <body>
-<h1>Welcome to My Dashboard</h1>
+<!--<h1>Welcome to th: ${user} </h1>-->
+<!--<h1>Welcome th:text="${user}" </h1>-->
+<!--th:text="${username}"-->
+<h1>Welcome, <span th:text="${username}">Username</span></h1>
 <div class="tile-container">
     <div class="tile" id="logout">
         <a href="/logout">Logout</a>

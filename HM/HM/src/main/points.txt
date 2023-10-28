@@ -1,0 +1,1 @@
+We have Created separate relations for mess and hostel because we have to store the mess and hostel details of the student in the database.

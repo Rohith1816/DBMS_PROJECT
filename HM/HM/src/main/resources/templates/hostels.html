@@ -38,11 +38,128 @@
 <!--</div>-->
 <!--</body>-->
 <!--</html>-->
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Hostel Application Form</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            background-color: #f5f5f5;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--        }-->
+
+<!--        h1 {-->
+<!--            text-align: center;-->
+<!--            background-color: #3498db;-->
+<!--            color: #fff;-->
+<!--            padding: 20px;-->
+<!--        }-->
+
+<!--        .container {-->
+<!--            display: flex;-->
+<!--            margin: 20px;-->
+<!--        }-->
+
+<!--        .left-side {-->
+<!--            flex: 1;-->
+<!--            padding: 20px;-->
+<!--            background-color: #f0f0f0;-->
+<!--        }-->
+
+<!--        .left-side a {-->
+<!--            text-decoration: none;-->
+<!--            color: #333;-->
+<!--        }-->
+
+<!--        .left-side a:hover {-->
+<!--            color: #3498db;-->
+<!--        }-->
+
+<!--        .right-side {-->
+<!--            flex: 1;-->
+<!--            padding: 20px;-->
+<!--            background-color: #fff;-->
+<!--            border: 1px solid #ccc;-->
+<!--            border-radius: 5px;-->
+<!--        }-->
+
+<!--        label {-->
+<!--            font-weight: bold;-->
+<!--        }-->
+
+<!--        input[type="text"],-->
+<!--        input[type="email"],-->
+<!--        select {-->
+<!--            width: 100%;-->
+<!--            padding: 10px;-->
+<!--            margin-bottom: 10px;-->
+<!--            border: 1px solid #ccc;-->
+<!--            border-radius: 5px;-->
+<!--        }-->
+
+<!--        select {-->
+<!--            height: 34px;-->
+<!--        }-->
+
+<!--        input[type="submit"] {-->
+<!--            background-color: #3498db;-->
+<!--            color: #fff;-->
+<!--            padding: 10px 20px;-->
+<!--            border: none;-->
+<!--            border-radius: 5px;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+
+<!--        input[type="submit"]:hover {-->
+<!--            background-color: #2577b5;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Hostel Application Form</h1>-->
+<!--<div class="container">-->
+<!--    &lt;!&ndash; Left Side - List of Hostel Names &ndash;&gt;-->
+<!--    <div class="left-side">-->
+<!--        <h2>Hostel Names</h2>-->
+<!--        <ul>-->
+<!--            <li th:each="hostel : ${hostels}">-->
+<!--                <a th:href="'#'+${hostel.hostelName}" th:text="${hostel.hostelName}">Hostel Name</a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Right Side - Application Form &ndash;&gt;-->
+<!--    <div class="right-side">-->
+<!--        <h2>Hostel Application Form</h2>-->
+<!--        <form action="/submit_application" method="post">-->
+<!--&lt;!&ndash;        <form id = "bowbow" method="post">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label for="name">Your Name:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="text" id="name" name="name" required><br><br>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <label for="email">Email:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="email" id="email" name="email" required><br><br>&ndash;&gt;-->
+
+<!--            <label for="hostel">Select Hostel:</label>-->
+<!--            <select id="hostel" name="hostel" required>-->
+<!--                <option th:each="hostel : ${hostels}" th:value="${hostel.hostelName}" th:text="${hostel.hostelName}">Hostel Name</option>-->
+<!--            </select><br><br>-->
+
+<!--            <input type="submit" value="Submit Application">-->
+
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Hostel Application Form</title>
     <style>
+        /* Your existing CSS styles here */
+        <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
@@ -115,6 +232,26 @@
         input[type="submit"]:hover {
             background-color: #2577b5;
         }
+
+        /* Centered "Withdraw" button */
+        .centered-button {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .centered-button input[type="submit"] {
+            background-color: #e74c3c; /* Red color for the "Withdraw" button */
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .centered-button input[type="submit"]:hover {
+            background-color: #c0392b; /* Darker red color on hover */
+        }
+    </style>
     </style>
 </head>
 <body>
@@ -133,43 +270,22 @@
     <!-- Right Side - Application Form -->
     <div class="right-side">
         <h2>Hostel Application Form</h2>
-<!--        <form action="/submit_application" method="post">-->
-        <form id = "bowbow" method="post">
-<!--            <label for="name">Your Name:</label>-->
-<!--            <input type="text" id="name" name="name" required><br><br>-->
-
-<!--            <label for="email">Email:</label>-->
-<!--            <input type="email" id="email" name="email" required><br><br>-->
-
+        <form action="/submit_application_hostel" method="post">
             <label for="hostel">Select Hostel:</label>
             <select id="hostel" name="hostel" required>
                 <option th:each="hostel : ${hostels}" th:value="${hostel.hostelName}" th:text="${hostel.hostelName}">Hostel Name</option>
             </select><br><br>
 
-            <input type="submit" value="Submit Application" onclick="submit()">
+            <input type="submit" value="Submit Application">
+        </form>
+    </div>
 
+    <!-- Centered "Withdraw" button -->
+    <div class="centered-button">
+        <form action="/withdraw_application_hostel" method="get">
+            <input type="submit" value="Withdraw">
         </form>
     </div>
 </div>
-<script>
-    document.getElementById("bowbow").addEventListener("submit", function (event) {
-        event.preventDefault();
-        const formData = new FormData(event.target);
-
-        fetch('/register', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.text())
-            .then(message => {
-                if (message==="Application added successfully"){
-                    alert("Successfully Applied for Hostel");
-                    window.location.href = "/hostels";
-                }
-                else
-                    alert("You have already registered for a hostel");
-            }); // Display the message as a popup
-    });
-</script>
 </body>
 </html>

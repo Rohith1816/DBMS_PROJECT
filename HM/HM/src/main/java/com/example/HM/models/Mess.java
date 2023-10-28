@@ -4,6 +4,7 @@ public class Mess {
     private int MessId;
     private String MessName;
     private String MessType;
+    private String Address;
     private String ContactNumber;
     private int Capacity;
 
@@ -11,11 +12,20 @@ public class Mess {
 
     }
 
-    public Mess(int messId, String messName, String messType, String contactNumber) {
+    public Mess(int messId, String messName, String messType, String address, String contactNumber) {
         MessId = messId;
         MessName = messName;
         MessType = messType;
+        Address = address;
         ContactNumber = contactNumber;
+    }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
     }
 
     public int getCapacity() {

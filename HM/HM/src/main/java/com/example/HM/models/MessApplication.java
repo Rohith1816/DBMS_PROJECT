@@ -5,7 +5,7 @@ import java.util.Date;
 public class MessApplication {
     private int applicationId;
     private  int userId;
-    private String messName;
+    private int messId;
     private boolean is_active;
     private Date appliedDate;
     private Date closingDate;
@@ -14,19 +14,19 @@ public class MessApplication {
 
     }
 
-    public MessApplication(int applicationId, int userId, String messName, boolean is_active, Date appliedDate) {
+    public MessApplication(int applicationId, int userId, int messId, boolean is_active, Date appliedDate) {
         this.applicationId = applicationId;
         this.userId = userId;
-        this.messName = messName;
+        this.messId = messId;
         this.is_active = is_active;
         this.appliedDate = appliedDate;
         this.closingDate = null;
     }
 
-    public MessApplication(int applicationId, int userId, String messName, Date appliedDate) {
+    public MessApplication(int applicationId, int userId, int messId, Date appliedDate) {
         this.applicationId = applicationId;
         this.userId = userId;
-        this.messName = messName;
+        this.messId = messId;
         this.appliedDate = appliedDate;
         this.is_active=true;
         this.closingDate =  null;
@@ -48,12 +48,12 @@ public class MessApplication {
         this.userId = userId;
     }
 
-    public String getMessName() {
-        return messName;
+    public int getMessId() {
+        return messId;
     }
 
-    public void setMessName(String messName) {
-        this.messName = messName;
+    public void setMessId(int messId) {
+        this.messId = messId;
     }
 
     public boolean isIs_active() {
