@@ -1,10 +1,14 @@
 package com.example.HM.Dao;
 
+import com.example.HM.models.HostelUser;
 import com.example.HM.models.MessApplication;
+import com.example.HM.models.MessUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class MessApplicationDao {
@@ -31,10 +35,29 @@ public class MessApplicationDao {
         return messApplication;
     };
 
+    public boolean solve(int uuid){
+        String sql = "SELECT COUNT(*) FROM Payment WHERE userId = ? AND PaymentFor = ?";
+        int count = jdbcTemplate.queryForObject(sql,Integer.class,uuid,"Mess");
+        if(count==0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
     public int AddApplication(MessApplication messApplication){
         System.out.println("Entered Add application DAO");
         int uuid = messApplication.getUserId();
         System.out.println(uuid);
+        boolean check = solve(uuid);
+        if(check==false){
+            System.out.println("Payment not made");
+            return -2;
+        }
+        else{
+            System.out.println("Payment made");
+        }
         String sql = "SELECT applicationId FROM messapplications WHERE is_active = TRUE AND userId = ?" ;
         MessApplication ma = null;
         try {
@@ -81,5 +104,29 @@ public class MessApplicationDao {
             jdbcTemplate.update(sql1,java.time.LocalDate.now(),ma.getApplicationId());
             return 1;
         }
+    }
+
+
+    private final RowMapper<MessUser> messUserRowMapper = (rs, rowNum) -> {
+        MessUser messUser = new MessUser();
+//        HostelUser hostelUser = new HostelUser();
+        messUser.setMessName(rs.getString("MessName"));
+        messUser.setStatus(rs.getString("status"));
+        messUser.setAppliedDate(rs.getDate("appliedDate"));
+        messUser.setClosingDate(rs.getDate("closingDate"));
+        return messUser;
+    };
+    public List<MessUser> getAllApplications(int uuid){
+        String sql = "SELECT mess.MessName AS MessName, "
+                + "messapplications.appliedDate AS appliedDate, "
+                + "IFNULL(closingDate, CURDATE()) AS closingDate, "
+                + "CASE "
+                + "    WHEN is_active = 1 THEN 'Active' "
+                + "    ELSE 'Not Active' "
+                + "END AS status "
+                + "FROM messapplications "
+                + "JOIN mess ON messapplications.messId =  mess.MessId "
+                + "WHERE userId = ?";
+        return jdbcTemplate.query(sql,messUserRowMapper,uuid);
     }
 }

@@ -40,7 +40,6 @@ public class SecurityConfiguration {
                                 .requestMatchers("/login","/allusers","/signin","/","/register").permitAll()
                                 .anyRequest().authenticated()
 //                        .requestMatchers("/signin", "/signup","/login","/css/login.css", "/register","/css/*","/js/*","/pics/*").permitAll()
-//                        .requestMatchers("/restaurants").hasRole("ADMIN")
 //                        .anyRequest().authenticated()
                 )
                 .formLogin((formLogin) -> formLogin

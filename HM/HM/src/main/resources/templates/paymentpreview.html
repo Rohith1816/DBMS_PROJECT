@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        .payment-container {
+            margin: 50px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            display: inline-block;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        select, input {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button-33 {
+            background-color: #c2fbd7;
+            border-radius: 100px;
+            box-shadow: rgba(44, 187, 99, 0.2) 0 -25px 18px -14px inset, rgba(44, 187, 99, 0.15) 0 1px 2px, rgba(44, 187, 99, 0.15) 0 2px 4px, rgba(44, 187, 99, 0.15) 0 4px 8px, rgba(44, 187, 99, 0.15) 0 8px 16px, rgba(44, 187, 99, 0.15) 0 16px 32px;
+            color: green;
+            cursor: pointer;
+            display: inline-block;
+            font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+            padding: 7px 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 250ms;
+            border: 0;
+            font-size: 16px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-33:hover {
+            box-shadow: rgba(44, 187, 99, 0.35) 0 -25px 18px -14px inset, rgba(44, 187, 99, 0.25) 0 1px 2px, rgba(44, 187, 99, 0.25) 0 2px 4px, rgba(44, 187, 99, 0.25) 0 4px 8px, rgba(44, 187, 99, 0.25) 0 8px 16px, rgba(44, 187, 99, 0.25) 0 16px 32px;
+            transform: scale(1.05) rotate(-1deg);
+        }
+        nav {
+            background-color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <button class="button-33" role="button" id="returnHomeButton">Home</button>
+</nav>
+<h1>Make Payment</h1>
+<div class="payment-container">
+    <form action="/make_payment" method="post">
+        <label for="paymentFor">Payment For:</label>
+        <select id="paymentFor" name="paymentfor" onchange="updateAmount()">
+            <option value="Hostel">Hostel</option>
+            <option value="Mess">Mess</option>
+        </select>
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name = "amount" value="100" min="100">
+        <button id="makePaymentButton">Make Payment</button>
+    </form>
+</div>
+
+<script>
+    function updateAmount() {
+        const paymentForSelect = document.getElementById("paymentFor");
+        const amountInput = document.getElementById("amount");
+
+        if (paymentForSelect.value === "Hostel") {
+            amountInput.value = "100";
+            amountInput.min = "100";
+        } else {
+            amountInput.value = "50";
+            amountInput.min = "50";
+        }
+    }
+
+    const makePaymentButton = document.getElementById("makePaymentButton");
+    makePaymentButton.addEventListener("click", function() {
+        const paymentFor = document.getElementById("paymentFor").value;
+        const amount = document.getElementById("amount").value;
+
+        // Here, you can add code to process the payment, e.g., send the data to a server.
+        console.log("Payment For:", paymentFor);
+        console.log("Amount:", amount);
+    });
+</script>
+</body>
+</html>

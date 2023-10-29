@@ -35,13 +35,14 @@ public class UserController {
                                @RequestParam("first_name") String firstName,
                                @RequestParam("last_name") String lastName,
                                @RequestParam("email") String email,
-                               @RequestParam("password") String password){
+                               @RequestParam("password") String password,Model model){
         User user = new User(username,firstName,lastName,email,password);
         int status = userdao.AddUser(user);
+        model.addAttribute("status","Username Already Exists");
         if(status==1)
             return "login";
         else
-            return "/register";
+            return "registrationfail";
     }
     @GetMapping(path="/signin")
     public String usersignIn(){

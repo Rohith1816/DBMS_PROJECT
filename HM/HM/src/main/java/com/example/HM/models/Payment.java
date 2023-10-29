@@ -5,14 +5,14 @@ public class Payment {
     private int id;
     private int userId;
     private String PaymentFor;
-    private Long transactionId;
+    private String transactionId;
     private int amount;
 
     public Payment() {
 
     }
 
-    public Payment(int userId, String paymentFor, Long transactionId, int amount) {
+    public Payment(int userId, String paymentFor, String transactionId, int amount) {
         this.userId = userId;
         PaymentFor = paymentFor;
         this.transactionId = transactionId;
@@ -43,11 +43,11 @@ public class Payment {
         PaymentFor = paymentFor;
     }
 
-    public Long getTransactionId() {
+    public String getTransactionId() {
         return transactionId;
     }
 
-    public void setTransactionId(Long transactionId) {
+    public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
     }
 

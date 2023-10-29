@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Home Page</title>
+    <title>Registration Failed</title>
 </head>
 <body>
 <script>
-    var alertMessage = '[[${alertMessage}]]'; // Use Thymeleaf syntax here
+    var alertMessage = '[[${status}]]'; // Use Thymeleaf syntax here
     alert(alertMessage);
 
     setTimeout(function() {
-        window.location.href = '/payment_preview';
+        window.location.href = '/register';
     }, 100);
 </script>
 </body>

@@ -158,8 +158,6 @@
 <head>
     <title>Hostel Application Form</title>
     <style>
-        /* Your existing CSS styles here */
-        <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
@@ -177,6 +175,7 @@
         .container {
             display: flex;
             margin: 20px;
+            justify-content: space-between;
         }
 
         .left-side {
@@ -252,7 +251,6 @@
             background-color: #c0392b; /* Darker red color on hover */
         }
     </style>
-    </style>
 </head>
 <body>
 <h1>Hostel Application Form</h1>
@@ -279,13 +277,13 @@
             <input type="submit" value="Submit Application">
         </form>
     </div>
+</div>
 
-    <!-- Centered "Withdraw" button -->
-    <div class="centered-button">
-        <form action="/withdraw_application_hostel" method="get">
-            <input type="submit" value="Withdraw">
-        </form>
-    </div>
+<!-- Positioned "Withdraw" button at the bottom -->
+<div class="centered-button">
+    <form action="/withdraw_application_hostel" method="get">
+        <input type="submit" value="Withdraw">
+    </form>
 </div>
 </body>
 </html>

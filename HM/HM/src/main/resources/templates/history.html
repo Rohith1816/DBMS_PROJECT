@@ -1,26 +1,142 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Hostel Registration</title>
+    <title>Application Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 25px;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        h1 {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        h2 {
+            background-color: #555;
+            color: white;
+            padding: 10px;
+            margin: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            margin: 10px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .button-33 {
+            background-color: #c2fbd7;
+            border-radius: 100px;
+            box-shadow: rgba(44, 187, 99, 0.2) 0 -25px 18px -14px inset, rgba(44, 187, 99, 0.15) 0 1px 2px, rgba(44, 187, 99, 0.15) 0 2px 4px, rgba(44, 187, 99, 0.15) 0 4px 8px, rgba(44, 187, 99, 0.15) 0 8px 16px, rgba(44, 187, 99, 0.15) 0 16px 32px;
+            color: green;
+            cursor: pointer;
+            display: inline-block;
+            font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+            padding: 7px 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 250ms;
+            border: 0;
+            font-size: 16px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-33:hover {
+            box-shadow: rgba(44, 187, 99, 0.35) 0 -25px 18px -14px inset, rgba(44, 187, 99, 0.25) 0 1px 2px, rgba(44, 187, 99, 0.25) 0 2px 4px, rgba(44, 187, 99, 0.25) 0 4px 8px, rgba(44, 187, 99, 0.25) 0 8px 16px, rgba(44, 187, 99, 0.25) 0 16px 32px;
+            transform: scale(1.05) rotate(-1deg);
+        }
+        nav {
+            background-color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-<form id="registrationForm">
-    <input type="text" name="hostelNumber" placeholder="Hostel Number">
-    <button type="submit">Register</button>
-</form>
+<nav>
+    <button class="button-33" role="button" id="returnHomeButton">Home</button>
+    <button onclick="printPage()" class="button-33" role="button">Print</button>
+</nav>
+<!--<h1>Hostel and Mess Applications</h1>-->
+<!-- Display Hostel Applications -->
+<h2>Hostel Applications</h2>
+<table>
+    <tr>
+        <th>Hostel Name</th>
+        <th>Closing Date</th>
+        <th>Applied Date</th>
+        <th>Status</th>
+    </tr>
+    <tr th:each="hostelApp : ${hostelUserList}">
+        <td th:text="${hostelApp.hostelName}"></td>
+        <td th:text="${hostelApp.closingDate}"></td>
+        <td th:text="${hostelApp.appliedDate}"></td>
+        <td th:text="${hostelApp.status}"></td>
+    </tr>
+</table>
 
+<!-- Display Mess Applications -->
+<h2>Mess Applications</h2>
+<table>
+    <tr>
+        <th>Mess Name</th>
+        <th>Applied Date</th>
+        <th>Closing Date</th>
+        <th>Status</th>
+    </tr>
+    <tr th:each="messApp : ${messUserList}">
+        <td th:text="${messApp.MessName}"></td>
+        <td th:text="${messApp.appliedDate}"></td>
+        <td th:text="${messApp.closingDate}"></td>
+        <td th:text="${messApp.status}"></td>
+    </tr>
+</table>
+<!-- Display Payment Applications -->
+<h2>Payment History</h2>
+<table>
+    <tr>
+        <th>Payment For</th>
+        <th>Transaction Id</th>
+        <th>Amount</th>
+    </tr>
+    <tr th:each="paymentlist : ${paymentList}">
+        <td th:text="${paymentlist.PaymentFor}"></td>
+        <td th:text="${paymentlist.transactionId}"></td>
+        <td th:text="${paymentlist.amount}"></td>
+    </tr>
+</table>
+<!--<button onclick="printPage()">Print</button>-->
 <script>
-    document.getElementById("registrationForm").addEventListener("submit", function (event) {
-        event.preventDefault();
-        const formData = new FormData(event.target);
 
-        fetch('/register', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.text())
-            .then(message => alert(message)); // Display the message as a popup
+    document.getElementById('returnHomeButton').addEventListener('click', function() {
+        returnHome();
     });
+
+    function returnHome() {
+        window.location.href = "/home"; // Replace "/" with the URL of your home page
+    }
+    function printPage() {
+        window.print();
+    }
 </script>
 </body>
 </html>

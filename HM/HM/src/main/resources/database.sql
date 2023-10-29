@@ -53,7 +53,15 @@ CREATE TABLE MessApplications(
     PRIMARY KEY (applicationId),
     FOREIGN KEY (userId) REFERENCES users(id),
     FOREIGN KEY (messId) REFERENCES mess(MessId)
-)
+);
+CREATE TABLE Payment (
+                         id INT AUTO_INCREMENT PRIMARY KEY,
+                         userId INT NOT NULL,
+                         PaymentFor VARCHAR(255),
+                         transactionId VARCHAR(255),
+                         amount INT,
+                         FOREIGN KEY (userId) REFERENCES Users(id)
+);
 
 -- Queries
 -- Insert data into users table--

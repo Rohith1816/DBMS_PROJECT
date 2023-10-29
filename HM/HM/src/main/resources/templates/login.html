@@ -62,6 +62,15 @@
 </head>
 <body>
 <h1>Login</h1>
+<!--<div th:if="${loginUnsuccessful}">-->
+<!--    <p>Login was unsuccessful. Please check your credentials.</p>-->
+<!--</div>-->
+<div th:if="${param.error}">
+    <div class="alert alert-danger">Invalid Username or Password</div>
+</div>
+<div th:if="${param.logout}">
+    <div class="alert alert-success">You have been logged out.</div>
+</div>
 <form method="post" role="form" th:action="@{/login}">
     <div class="section text-center">
         <h4 class="mb-4 pb-3">Log In</h4>

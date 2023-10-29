@@ -36,6 +36,12 @@ public class MessApplicationController {
         messApplication.setMessId(messId);
         String response;
         int status = messApplicationDao.AddApplication(messApplication);
+        if(status==-2){
+            response = "Payment not made";
+            model.addAttribute("alertMessage", response);
+            return "neccessaypayment";
+        }
+        else
         if(status==1)
         {
             response = "Application added successfully";

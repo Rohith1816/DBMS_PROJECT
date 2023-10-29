@@ -1,6 +1,7 @@
 package com.example.HM.Dao;
 
 import com.example.HM.models.HostelApplications;
+import com.example.HM.models.HostelUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -110,9 +111,28 @@ public class HostelApplicationDao {
         }
     }
 
-    public List<HostelApplications> getAllApplications(String username){
-        String sql = "SELECT * FROM hostelapplications where userId = (SELECT id FROM users WHERE username = ?)";
-        return jdbcTemplate.query(sql,hostelApplicationsRowMapper,username);
+    private final RowMapper<HostelUser> hostelUserRowMapper = (rs, rowNum) -> {
+        HostelUser hostelUser = new HostelUser();
+        hostelUser.setHostelName(rs.getString("HostelName"));
+        hostelUser.setStatus(rs.getString("status"));
+        hostelUser.setAppliedDate(rs.getDate("appliedDate"));
+        hostelUser.setClosingDate(rs.getDate("closingDate"));
+        return hostelUser;
+    };
+
+    public List<HostelUser> getAllApplications(int userid){
+        String sql = "SELECT hostel.HostelName AS HostelName, "
+                + "hostelapplications.appliedDate AS appliedDate, "
+                + "IFNULL(closingDate, CURDATE()) AS closingDate, "
+                + "CASE "
+                + "    WHEN is_active = 1 THEN 'Active' "
+                + "    ELSE 'Not Active' "
+                + "END AS status "
+                + "FROM hostelapplications "
+                + "JOIN hostel ON hostelapplications.hostelId = hostel.HostelId "
+                + "WHERE userId = ?";
+//        String sql = "SELECT * FROM hostelapplications where userId = (SELECT id FROM users WHERE username = ?)";
+        return jdbcTemplate.query(sql,hostelUserRowMapper,userid);
     }
 
 }
