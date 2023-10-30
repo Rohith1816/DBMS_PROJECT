@@ -65,7 +65,7 @@ public class HostelApplicationDao {
         catch (Exception e){
             ha = null;
         }
-        System.out.println(ha);
+//        System.out.println(ha);
         String countSql = "SELECT COUNT(*) FROM hostelapplications WHERE is_active = TRUE AND hostelId = ?";
         int count = jdbcTemplate.queryForObject(countSql,Integer.class,hostelApplications.getHostelId());
 //        System.out.println("count :" + count);

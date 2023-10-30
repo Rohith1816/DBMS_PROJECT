@@ -47,9 +47,9 @@ public class MessApplicationDao {
     }
 
     public int AddApplication(MessApplication messApplication){
-        System.out.println("Entered Add application DAO");
+//        System.out.println("Entered Add application DAO");
         int uuid = messApplication.getUserId();
-        System.out.println(uuid);
+//        System.out.println(uuid);
         boolean check = solve(uuid);
         if(check==false){
 //            System.out.println("Payment not made");

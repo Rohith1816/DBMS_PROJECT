@@ -49,12 +49,12 @@ public class UserController {
 
         return "login";
     }
-    @RequestMapping(path={"/allusers"})
-    public String getall(Model model){
-         List<User> user= userdao.getAllUsers();
-        model.addAttribute("users",user);
-        return "users";
-    }
+//    @RequestMapping(path={"/allusers"})
+//    public String getall(Model model){
+//         List<User> user= userdao.getAllUsers();
+//        model.addAttribute("users",user);
+//        return "users";
+//    }
 
     @RequestMapping(path={"/about"})
     public String printdetails(Model model, @AuthenticationPrincipal UserDetails userDetails){

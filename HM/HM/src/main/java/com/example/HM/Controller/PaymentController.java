@@ -36,8 +36,8 @@ public class PaymentController {
     public String makePaymentPost(@RequestParam("amount") int amount,
                                   @RequestParam("paymentfor") String paymentFor, @AuthenticationPrincipal UserDetails userDetails, Model model,
                                   HttpSession session){
-        System.out.println(amount);
-        System.out.println(paymentFor);
+//        System.out.println(amount);
+//        System.out.println(paymentFor);
         Payment payment = new Payment();
         payment.setAmount(amount);
         payment.setPaymentFor(paymentFor);
