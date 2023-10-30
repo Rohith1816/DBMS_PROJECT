@@ -1,6 +1,7 @@
 package com.example.HM.Dao;
 
 import com.example.HM.models.Mess;
+import com.example.HM.models.Vacancy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -35,9 +36,21 @@ public class MessDao {
         return mess.getMessId();
     }
 
-    public List<Mess> getAllMess(){
+    private final RowMapper<Vacancy> VacancyRowMapper = (rs, rowNum) -> {
+        Vacancy vacancy = new Vacancy();
+        vacancy.setName(rs.getString("Name"));
+        vacancy.setCapacity(rs.getInt("Capacity"));
+        vacancy.setRemainingVacancy(rs.getInt("Vacancy"));
+        return vacancy;
+    };
+
+    public List<Vacancy> getAllMess(){
         String sql = "SELECT MessName From Mess";
-        return jdbcTemplate.query(sql,messRowMapper1);
+        String query = "select distinct mess.messname as Name, Capacity as Capacity , \n" +
+                "mess.Capacity-( select count(*) from messapplications where is_active = 1 AND messapplications.messId = mess.messId)\n" +
+                " as 'Vacancy'\n" +
+                "from mess,messapplications order by mess.messname;";
+        return jdbcTemplate.query(query,VacancyRowMapper);
     }
 
 }

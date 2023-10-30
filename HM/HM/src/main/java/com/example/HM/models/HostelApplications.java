@@ -13,7 +13,6 @@ public class HostelApplications {
     private Date closingDate;
 
     public HostelApplications() {
-
     }
 
     public HostelApplications(int userId, int hostelId, boolean is_active, Date appliedDate) {

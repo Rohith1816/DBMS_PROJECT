@@ -26,11 +26,6 @@ public class PaymentController {
         this.authenticatedUser = authenticatedUser;
     }
 
-    public long generatedTransactionId(){
-        long transactionId = (long)(Math.random()*1000000000);
-        return transactionId;
-    }
-
     @GetMapping(path={"/make_payment"})
     public String makePayment(){
         return "payment";
@@ -89,9 +84,9 @@ public class PaymentController {
     @ResponseBody
     public String payment(@PathVariable("payment_id") String payment_id, Model model,HttpSession session, @AuthenticationPrincipal UserDetails userDetails
     ){
-        System.out.println("Payment checking Succesfull");
-        System.out.println(payment_id);
-        System.out.println(session.getAttribute("paymentFor"));
+//        System.out.println("Payment checking Succesfull");
+//        System.out.println(payment_id);
+//        System.out.println(session.getAttribute("paymentFor"));
         model.addAttribute("payment_id", payment_id);
         Payment payment = new Payment();
         payment.setTransactionId(payment_id);

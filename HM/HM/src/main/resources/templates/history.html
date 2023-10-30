@@ -82,14 +82,14 @@
 <table>
     <tr>
         <th>Hostel Name</th>
-        <th>Closing Date</th>
         <th>Applied Date</th>
+        <th>Closing Date</th>
         <th>Status</th>
     </tr>
     <tr th:each="hostelApp : ${hostelUserList}">
         <td th:text="${hostelApp.hostelName}"></td>
-        <td th:text="${hostelApp.closingDate}"></td>
         <td th:text="${hostelApp.appliedDate}"></td>
+        <td th:text="${hostelApp.closingDate}"></td>
         <td th:text="${hostelApp.status}"></td>
     </tr>
 </table>

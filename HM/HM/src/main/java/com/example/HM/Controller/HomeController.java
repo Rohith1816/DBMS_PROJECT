@@ -33,6 +33,8 @@ public class HomeController {
     public String home(Model model,@AuthenticationPrincipal UserDetails userDetails){
         User user = authenticatedUser.getAuthenticatedUser(userDetails);
         model.addAttribute("username",user.getUsername());
+        String Name = user.getFirst_name() + " " + user.getLast_name();
+        model.addAttribute("Name",Name);
         return "home";
     }
 

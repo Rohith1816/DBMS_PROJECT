@@ -1,6 +1,7 @@
 package com.example.HM.Controller;
 
 import com.example.HM.models.Mess;
+import com.example.HM.models.Vacancy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,7 @@ public class MessController {
 
     @GetMapping(path={"/mess"})
     public String getMess(Model model){
-        List<Mess> messList = messDao.getAllMess();
+        List<Vacancy> messList = messDao.getAllMess();
         model.addAttribute("messes",messList);
         return "mess";
     }

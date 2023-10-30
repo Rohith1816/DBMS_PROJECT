@@ -250,6 +250,7 @@
         .centered-button input[type="submit"]:hover {
             background-color: #c0392b; /* Darker red color on hover */
         }
+
     </style>
 </head>
 <body>
@@ -260,7 +261,11 @@
         <h2>Hostel Names</h2>
         <ul>
             <li th:each="hostel : ${hostels}">
-                <a th:href="'#'+${hostel.hostelName}" th:text="${hostel.hostelName}">Hostel Name</a>
+                <h4 th:text="${hostel.Name}">Hostel Name</h4>
+                    <p>Capacity: <span th:text="${hostel.Capacity}"></span></p>
+                    <p>Vacancy : <span th:text="${hostel.remainingVacancy}"></span></p>
+<!--                <h5 class="capacity" th:text="${hostel.Capacity}" style="display: none;">Hostel Capacity</h5>-->
+<!--                <h5>th:text="${hostel.Capacity}">Hostel Capacity</h5>-->
             </li>
         </ul>
     </div>
@@ -271,7 +276,7 @@
         <form action="/submit_application_hostel" method="post">
             <label for="hostel">Select Hostel:</label>
             <select id="hostel" name="hostel" required>
-                <option th:each="hostel : ${hostels}" th:value="${hostel.hostelName}" th:text="${hostel.hostelName}">Hostel Name</option>
+                <option th:each="hostel : ${hostels}" th:value="${hostel.Name}" th:text="${hostel.Name}">Hostel Name</option>
             </select><br><br>
 
             <input type="submit" value="Submit Application">
@@ -285,5 +290,8 @@
         <input type="submit" value="Withdraw">
     </form>
 </div>
+<script>
+
+</script>
 </body>
 </html>
