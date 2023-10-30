@@ -51,6 +51,16 @@ public class HostelUser {
     public void setClosingDate(Date closingDate) {
         this.closingDate = closingDate;
     }
+
+    @Override
+    public String toString() {
+        return "HostelUser{" +
+                "HostelName='" + HostelName + '\'' +
+                ", status='" + status + '\'' +
+                ", appliedDate=" + appliedDate +
+                ", closingDate=" + closingDate +
+                '}';
+    }
 }
 
 

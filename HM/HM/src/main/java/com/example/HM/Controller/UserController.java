@@ -63,7 +63,6 @@ public class UserController {
         model.addAttribute(user);
         return "about";
     }
-
 //    @GetMapping("/signup")
 //    public String register(Model model){
 //        User user = new User();

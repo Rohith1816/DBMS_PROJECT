@@ -37,7 +37,7 @@ public class SecurityConfiguration {
         http
                 .authorizeHttpRequests((auth) -> auth
 //                                .requestMatchers("/login","/signin","/register","/home","/").permitAll()
-                                .requestMatchers("/login","/allusers","/signin","/","/register").permitAll()
+                                .requestMatchers("/login","/signin","/","/register").permitAll()
                                 .anyRequest().authenticated()
 //                        .requestMatchers("/signin", "/signup","/login","/css/login.css", "/register","/css/*","/js/*","/pics/*").permitAll()
 //                        .anyRequest().authenticated()

@@ -69,4 +69,16 @@ public class HostelApplications {
     public void setClosingDate(Date closingDate) {
         this.closingDate = closingDate;
     }
+
+    @Override
+    public String toString() {
+        return "HostelApplications{" +
+                "applicationId=" + applicationId +
+                ", userId=" + userId +
+                ", hostelId=" + hostelId +
+                ", is_active=" + is_active +
+                ", appliedDate=" + appliedDate +
+                ", closingDate=" + closingDate +
+                '}';
+    }
 }

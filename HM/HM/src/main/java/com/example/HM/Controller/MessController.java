@@ -20,6 +20,7 @@ public class MessController {
     @GetMapping(path={"/mess"})
     public String getMess(Model model){
         List<Vacancy> messList = messDao.getAllMess();
+//        System.out.println(messList);
         model.addAttribute("messes",messList);
         return "mess";
     }

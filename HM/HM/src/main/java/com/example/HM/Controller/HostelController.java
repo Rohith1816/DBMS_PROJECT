@@ -1,10 +1,6 @@
 package com.example.HM.Controller;
 
 import com.example.HM.Dao.HostelDao;
-import com.example.HM.Dao.UserDao;
-import com.example.HM.models.Hostel;
-import com.example.HM.models.HostelApplications;
-import com.example.HM.models.User;
 import com.example.HM.models.Vacancy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,9 +20,9 @@ public class HostelController {
     }
 
     @GetMapping(path={"/hostels"})
-    public String gethostels(Model model){
+    public String hostels(Model model){
         List<Vacancy> hostelsList = hostelDao.getAllHostels();
-        System.out.println(hostelsList);
+//        System.out.println(hostelsList);
         model.addAttribute("hostels",hostelsList);
         return "hostels";
     }

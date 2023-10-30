@@ -52,7 +52,7 @@ public class PaymentController {
             return "Payment";
         }
         else{
-            System.out.println("Payment already Made");
+//            System.out.println("Payment already Made");
             response = "Payment already Made";
             model.addAttribute("alertMessage", response);
             return "message";
@@ -64,7 +64,7 @@ public class PaymentController {
     @PostMapping(path={"/payment"})
     @ResponseBody
     public String paymentchecking(@RequestParam("amount") String data,HttpSession session) throws Exception{
-        System.out.println("Payment checking Succesfull");
+//        System.out.println("Payment checking Succesfull");
         int amount = Integer.parseInt(data);
         session.setAttribute("amount",amount);
 //        System.out.println(amount);

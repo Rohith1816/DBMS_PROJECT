@@ -50,13 +50,13 @@ public class HostelApplicationDao {
         int uuid = hostelApplications.getUserId();
         boolean check = solve(uuid);
         if(check==false){
-            System.out.println("Payment not made");
+//            System.out.println("Payment not made");
             return -2;
         }
-        else{
-            System.out.println("Payment made");
-        }
-        System.out.println(uuid);
+//        else{
+////            System.out.println("Payment made");
+//        }
+//        System.out.println(uuid);
         String sql = "SELECT applicationId FROM hostelapplications WHERE is_active = TRUE AND userId = ?" ;
         HostelApplications ha = null;
         try {
@@ -68,15 +68,15 @@ public class HostelApplicationDao {
         System.out.println(ha);
         String countSql = "SELECT COUNT(*) FROM hostelapplications WHERE is_active = TRUE AND hostelId = ?";
         int count = jdbcTemplate.queryForObject(countSql,Integer.class,hostelApplications.getHostelId());
-        System.out.println("count :" + count);
+//        System.out.println("count :" + count);
         String hostelCapacity = "SELECT Capacity FROM hostel WHERE HostelId = ?";
         int capacity = jdbcTemplate.queryForObject(hostelCapacity,Integer.class,hostelApplications.getHostelId());
         if(capacity == count){
-            System.out.println("Hostel if full");
+//            System.out.println("Hostel if full");
             return -1;
         }
         else if(ha==null){
-            System.out.println("Entered DAO null part");
+//            System.out.println("Entered DAO null part");
             sql = "INSERT INTO HOSTELAPPLICATIONS(userId,hostelId,is_active,appliedDate,closingDate) VALUES (?,?,?,?,?)";
             jdbcTemplate.update(sql,hostelApplications.getUserId(),
                     hostelApplications.getHostelId(),
@@ -87,7 +87,7 @@ public class HostelApplicationDao {
         }
 
         else{
-            System.out.println("Entered DAO not null part");
+//            System.out.println("Entered DAO not null part");
             return  0;
         }
     }

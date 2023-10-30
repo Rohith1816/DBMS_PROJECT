@@ -35,13 +35,14 @@ public class UserDao {
 
     public User getUserByUsername(String username){
 //        this.loggedUser = username;
-        String sql = "Select * from users where username = "+"'"+username+"'";
-        return jdbcTemplate.queryForObject(sql, userRowMapper);
+        String sql = "Select * from users where username = ? ";
+//        +"'"+username+"'";
+        return jdbcTemplate.queryForObject(sql,new Object[] { username },userRowMapper);
     }
 
     public int AddUser(User user){
 
-        System.out.println("Entered DAO");
+//        System.out.println("Entered DAO");
         User user1 = null;
         try{
             user1 = getUserByUsername(user.getUsername());
@@ -61,21 +62,22 @@ public class UserDao {
             return 1;
         }
         else{
-            System.out.println("Username Already Exists");
+//            System.out.println("Username Already Exists");
             return 0;
         }
     }
 
 
 
-    public List<User> getAllUsers(){
-        String sqlQuery = "SELECT * FROM USERS";
-        return jdbcTemplate.query(sqlQuery,userRowMapper);
-    }
+//    public List<User> getAllUsers(){
+//        String sqlQuery = "SELECT * FROM USERS";
+//        return jdbcTemplate.query(sqlQuery,userRowMapper);
+//    }
 
     public User getDetailsofUser(String username){
-        String sql = "Select * from users where username = "+"'"+username+"'";
-        return jdbcTemplate.queryForObject(sql,userRowMapper);
+        String sql = "Select * from users where username = ?";
+//        +"'"+username+"'";
+        return jdbcTemplate.queryForObject(sql,new Object[] { username },userRowMapper);
     }
 
 

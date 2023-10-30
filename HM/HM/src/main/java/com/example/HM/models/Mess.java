@@ -67,4 +67,16 @@ public class Mess {
     public void setContactNumber(String contactNumber) {
         ContactNumber = contactNumber;
     }
+
+    @Override
+    public String toString() {
+        return "Mess{" +
+                "MessId=" + MessId +
+                ", MessName='" + MessName + '\'' +
+                ", MessType='" + MessType + '\'' +
+                ", Address='" + Address + '\'' +
+                ", ContactNumber='" + ContactNumber + '\'' +
+                ", Capacity=" + Capacity +
+                '}';
+    }
 }

@@ -58,4 +58,14 @@ public class Hostel {
 
     }
 
+    @Override
+    public String toString() {
+        return "Hostel{" +
+                "HostelId=" + HostelId +
+                ", HostelName='" + HostelName + '\'' +
+                ", Address='" + Address + '\'' +
+                ", ContactNumber='" + ContactNumber + '\'' +
+                ", Capacity=" + Capacity +
+                '}';
+    }
 }

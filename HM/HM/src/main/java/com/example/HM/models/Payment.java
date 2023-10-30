@@ -58,4 +58,15 @@ public class Payment {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", PaymentFor='" + PaymentFor + '\'' +
+                ", transactionId='" + transactionId + '\'' +
+                ", amount=" + amount +
+                '}';
+    }
 }

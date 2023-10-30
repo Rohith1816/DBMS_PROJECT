@@ -52,12 +52,12 @@ public class MessApplicationDao {
         System.out.println(uuid);
         boolean check = solve(uuid);
         if(check==false){
-            System.out.println("Payment not made");
+//            System.out.println("Payment not made");
             return -2;
         }
-        else{
-            System.out.println("Payment made");
-        }
+//        else{
+//            System.out.println("Payment made");
+//        }
         String sql = "SELECT applicationId FROM messapplications WHERE is_active = TRUE AND userId = ?" ;
         MessApplication ma = null;
         try {
@@ -66,18 +66,18 @@ public class MessApplicationDao {
         catch (Exception e){
             ma = null;
         }
-        System.out.println(ma);
+//        System.out.println(ma);
         String countSql = "SELECT COUNT(*) FROM messapplications WHERE is_active = TRUE AND messId = ?";
         int count = jdbcTemplate.queryForObject(countSql,Integer.class,messApplication.getMessId());
-        System.out.println("count :" + count);
+//        System.out.println("count :" + count);
         String messCapacity = "SELECT Capacity FROM mess WHERE MessId = ?";
         int capacity = jdbcTemplate.queryForObject(messCapacity,Integer.class,messApplication.getMessId());
         if(capacity == count){
-            System.out.println("Mess if full");
+//            System.out.println("Mess if full");
             return -1;
         }
         else if(ma==null){
-            System.out.println("Entered DAO null part");
+//            System.out.println("Entered DAO null part");
             String sql1 = "INSERT INTO messapplications(userId,messId,is_active,appliedDate) VALUES(?,?,?,?)";
             jdbcTemplate.update(sql1,messApplication.getUserId(),messApplication.getMessId(),messApplication.isIs_active(),java.time.LocalDate.now());
             return 1;

@@ -32,14 +32,13 @@ public class HomeController {
     @RequestMapping(path = {"/home"})
     public String home(Model model,@AuthenticationPrincipal UserDetails userDetails){
         User user = authenticatedUser.getAuthenticatedUser(userDetails);
-        model.addAttribute("username",user.getUsername());
         String Name = user.getFirst_name() + " " + user.getLast_name();
         model.addAttribute("Name",Name);
         return "home";
     }
 
     @RequestMapping(path="/")
-    public String autherizationPage(){
+    public String authorizationPage(){
         return "lockPage";
     }
 

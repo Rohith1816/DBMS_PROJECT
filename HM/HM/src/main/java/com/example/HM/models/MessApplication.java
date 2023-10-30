@@ -79,4 +79,16 @@ public class MessApplication {
     public void setClosingDate(Date closingDate) {
         this.closingDate = closingDate;
     }
+
+    @Override
+    public String toString() {
+        return "MessApplication{" +
+                "applicationId=" + applicationId +
+                ", userId=" + userId +
+                ", messId=" + messId +
+                ", is_active=" + is_active +
+                ", appliedDate=" + appliedDate +
+                ", closingDate=" + closingDate +
+                '}';
+    }
 }

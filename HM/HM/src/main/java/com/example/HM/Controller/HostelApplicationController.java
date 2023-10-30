@@ -84,8 +84,4 @@ public class HostelApplicationController {
         model.addAttribute("alertMessage", response);
         return "message";
     }
-
-
-
-
 }

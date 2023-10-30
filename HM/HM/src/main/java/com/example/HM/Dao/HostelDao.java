@@ -46,12 +46,12 @@ public class HostelDao {
     }
 
     public List<Vacancy> getAllHostels(){
-        String s1 = "SELECT DISTINCT h.HostelName AS Name, h.capacity AS Capacity, " +
-                "(h.capacity - (SELECT COUNT(a) FROM HostelApplication a WHERE a.isActive = 1 AND a.hostel = h)) AS Vacancy " +
-                "FROM Hostel h ORDER BY h.hostelName";
+//        String s1 = "SELECT DISTINCT h.HostelName AS Name, h.capacity AS Capacity, " +
+//                "(h.capacity - (SELECT COUNT(a) FROM HostelApplication a WHERE a.isActive = 1 AND a.hostel = h)) AS Vacancy " +
+//                "FROM Hostel h ORDER BY h.hostelName";
         String s2 = "select distinct hostel.hostelname as Name, Capacity as Capacity , hostel.Capacity-( select count(*) from hostelapplications where is_active = 1 AND hostelapplications.hostelId = hostel.HostelId) as 'Vacancy'\n" +
                 "from hostel,hostelapplications order by hostel.hostelname;";
-        String sql = "SELECT HostelName,Capacity From Hostel";
+//        String sql = "SELECT HostelName,Capacity From Hostel";
         return jdbcTemplate.query(s2,VacancyRowMapper);
     }
 

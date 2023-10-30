@@ -49,4 +49,14 @@ public class MessUser {
     public void setClosingDate(Date closingDate) {
         this.closingDate = closingDate;
     }
+
+    @Override
+    public String toString() {
+        return "MessUser{" +
+                "MessName='" + MessName + '\'' +
+                ", status='" + status + '\'' +
+                ", appliedDate=" + appliedDate +
+                ", closingDate=" + closingDate +
+                '}';
+    }
 }

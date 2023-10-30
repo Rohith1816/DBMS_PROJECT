@@ -27,7 +27,7 @@ public class MessApplicationController {
 
     @PostMapping(path={"/submit_application_mess"})
     public String submitApplication(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("mess") String messName, Model model){
-        System.out.println("Entered submit application controller");
+//        System.out.println("Entered submit application controller");
         User u = authenticatedUser.getAuthenticatedUser(userDetails);
         MessApplication messApplication = new MessApplication();
         messApplication.setUserId(u.getId());
