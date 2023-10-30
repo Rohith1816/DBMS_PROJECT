@@ -2,7 +2,6 @@ package com.example.HM.Controller;
 
 import com.example.HM.Dao.HostelApplicationDao;
 import com.example.HM.Dao.HostelDao;
-import com.example.HM.Dao.UserDao;
 import com.example.HM.Services.AuthenticatedUser;
 import com.example.HM.models.HostelApplications;
 import com.example.HM.models.User;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,7 +37,7 @@ public class HostelApplicationController {
         hostelApplications.setIs_active(true);
         int hostelId = hostelDao.getHostelIdFromSql(hostelName);
         hostelApplications.setHostelId(hostelId);
-        System.out.println(hostelName);
+//        System.out.println(hostelName);
 //        System.out.println(hostelId);
 //        System.out.println(u.getId());
         String response;
@@ -73,7 +71,12 @@ public class HostelApplicationController {
         int userId = u.getId();
         int status = hostelApplicationDao.WithDrawApplication(userId);
         String response;
-        if(status==1)
+        if(status==-1){
+            response = "Maximum limit for your hostel application is reached";
+            model.addAttribute("alertMessage", response);
+            return "maxreach";
+        }
+        else if(status==1)
         {
             response = "Application withdrawn successfully";
         }
@@ -84,4 +87,5 @@ public class HostelApplicationController {
         model.addAttribute("alertMessage", response);
         return "message";
     }
+
 }

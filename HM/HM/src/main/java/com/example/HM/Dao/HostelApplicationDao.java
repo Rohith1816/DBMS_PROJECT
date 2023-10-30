@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 
@@ -15,6 +14,7 @@ public class HostelApplicationDao {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
+
 
     public HostelApplicationDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -46,17 +46,13 @@ public class HostelApplicationDao {
             return true;
         }
     }
+
     public int AddApplication(HostelApplications hostelApplications){
         int uuid = hostelApplications.getUserId();
         boolean check = solve(uuid);
         if(check==false){
-//            System.out.println("Payment not made");
             return -2;
         }
-//        else{
-////            System.out.println("Payment made");
-//        }
-//        System.out.println(uuid);
         String sql = "SELECT applicationId FROM hostelapplications WHERE is_active = TRUE AND userId = ?" ;
         HostelApplications ha = null;
         try {

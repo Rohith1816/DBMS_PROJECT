@@ -115,6 +115,12 @@
         console.log("Payment For:", paymentFor);
         console.log("Amount:", amount);
     });
+    document.getElementById('returnHomeButton').addEventListener('click', function() {
+        returnHome();
+    });
+    function returnHome() {
+        window.location.href = "/home"; // Replace "/" with the URL of your home page
+    }
 </script>
 </body>
 </html>
