@@ -8,3 +8,6 @@ Payments
 -- if not paid then show the payment button.
 else render the hostel page.
 similarly for the mess page.
+
+
+Give user a limit for the number of applications he can make.

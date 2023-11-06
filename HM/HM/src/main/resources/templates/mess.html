@@ -126,6 +126,28 @@
             padding: 10px;
             /*margin-bottom: 10px;*/
         }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
     </style>
 <!--    </style>-->
 </head>
@@ -139,13 +161,29 @@
     <!-- Left Side - List of Mess Names -->
     <div class="left-side">
         <h2>Mess Names</h2>
-        <ul>
-            <li th:each="mess : ${messes}">
-                <h4 th:text="${mess.Name}">Mess Name</h4>
-                <p>Capacity: <span th:text="${mess.Capacity}"></span></p>
-                <p>Vacancy : <span th:text="${mess.remainingVacancy}"></span></p>
-            </li>
-        </ul>
+<!--        <ul>-->
+<!--            <li th:each="mess : ${messes}">-->
+<!--                <h4 th:text="${mess.Name}">Mess Name</h4>-->
+<!--                <p>Capacity: <span th:text="${mess.Capacity}"></span></p>-->
+<!--                <p>Vacancy : <span th:text="${mess.remainingVacancy}"></span></p>-->
+<!--            </li>-->
+<!--        </ul>-->
+        <table>
+            <thead>
+            <tr>
+                <th>Mess Name</th>
+                <th>Capacity</th>
+                <th>Vacancy</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="mess : ${messes}">
+                <td th:text="${mess.Name}">Hostel Name</td>
+                <td th:text="${mess.Capacity}">Capacity</td>
+                <td th:text="${mess.remainingVacancy}">Vacancy</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
     <!-- Right Side - Application Form -->

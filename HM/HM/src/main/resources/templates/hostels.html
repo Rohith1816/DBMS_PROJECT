@@ -281,6 +281,28 @@
             padding: 10px;
             /*margin-bottom: 10px;*/
         }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
     </style>
 </head>
 <body>
@@ -293,15 +315,31 @@
     <!-- Left Side - List of Hostel Names -->
     <div class="left-side">
         <h2>Hostel Names</h2>
-        <ul>
-            <li th:each="hostel : ${hostels}">
-                <h4 th:text="${hostel.Name}">Hostel Name</h4>
-                    <p>Capacity: <span th:text="${hostel.Capacity}"></span></p>
-                    <p>Vacancy : <span th:text="${hostel.remainingVacancy}"></span></p>
-<!--                <h5 class="capacity" th:text="${hostel.Capacity}" style="display: none;">Hostel Capacity</h5>-->
-<!--                <h5>th:text="${hostel.Capacity}">Hostel Capacity</h5>-->
-            </li>
-        </ul>
+<!--        <ul>-->
+<!--            <li th:each="hostel : ${hostels}">-->
+<!--                <h4 th:text="${hostel.Name}">Hostel Name</h4>-->
+<!--                    <p>Capacity: <span th:text="${hostel.Capacity}"></span></p>-->
+<!--                    <p>Vacancy : <span th:text="${hostel.remainingVacancy}"></span></p>-->
+<!--&lt;!&ndash;                <h5 class="capacity" th:text="${hostel.Capacity}" style="display: none;">Hostel Capacity</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;                <h5>th:text="${hostel.Capacity}">Hostel Capacity</h5>&ndash;&gt;-->
+<!--            </li>-->
+<!--        </ul>-->
+        <table>
+            <thead>
+            <tr>
+                <th>Hostel Name</th>
+                <th>Capacity</th>
+                <th>Vacancy</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="hostel : ${hostels}">
+                <td th:text="${hostel.Name}">Hostel Name</td>
+                <td th:text="${hostel.Capacity}">Capacity</td>
+                <td th:text="${hostel.remainingVacancy}">Vacancy</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
     <!-- Right Side - Application Form -->
